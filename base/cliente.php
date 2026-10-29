@@ -59,11 +59,12 @@ class clientes
             }
         }
     }
-    public function listaAlquileres():string{
+    public function listaAlquileres(): string
+    {
         $txt = "";
         foreach ($this->equiposAlquilados as $indice => $equipo) {
-            $txt += $equipo->muestraResumen();
+            $txt .= $equipo->muestraResumen() . "\n";
         }
-        return $txt ;
+        return $txt;
     }
 }
