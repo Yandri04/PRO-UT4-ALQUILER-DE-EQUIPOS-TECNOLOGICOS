@@ -1,6 +1,6 @@
 <?php
 require_once 'equipo.php';
-
+require_once __DIR__ . '/interfaces/resumible.php';
 class clientes
 {
     public string $nombre;
@@ -31,6 +31,7 @@ class clientes
     public function alquilar(equipo $equipo){
 
     }
+    
     // metodo para setear el objeto que compramos como devuelvo y quitarlo de nuetro array de prestamos
     public function devolver(int $numEquipo): void
     {
