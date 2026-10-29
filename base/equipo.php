@@ -15,4 +15,47 @@ abstract class equipo
         $this->precio = $precio;
         $this->alquilado = false;
     }
+
+    abstract function tipo();
+
+
+    public function getNumero(): int
+    {
+        return $this->numero;
+    }
+
+
+    public function getPrecio(): float
+    {
+        return $this->precio;
+    }
+    public function getPrecioConIva(): float
+    {
+        return round($this->precio + ($this->precio * self::IVA), 2);
+    }
+
+    public function estaAlquilado(): bool
+    {
+        return $this->alquilado;
+    }
+
+    public function marcarAlquilado(): void
+    {
+        $this->alquilado === true;
+    }
+
+    public function marcarDevuelto(): void
+    {
+        $this->alquilado === false;
+    }
+
+    public function muestraResumen(): string
+    {
+        return "[" . static::class . "] {$this->nombre} ({$this->numero}) - {$this->precio} EUR/dia (" . $this->getPrecioConIva() . " con IVA) - " . ($this->alquilado ? "ALQUILADO" : "DISPONIBLE");
+    }
+
+    public function __toString(): string
+    {
+        return "[" . static::class . "] {$this->nombre} (n. {$this->numero})";
+    }
 }
