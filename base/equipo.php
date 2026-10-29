@@ -29,6 +29,7 @@ abstract class equipo
     {
         return $this->precio;
     }
+
     public function getPrecioConIva(): float
     {
         return round($this->precio + ($this->precio * self::IVA), 2);

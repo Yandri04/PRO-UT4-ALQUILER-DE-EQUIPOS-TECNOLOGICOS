@@ -10,7 +10,7 @@ class clientes
 
 
     // se crea el constructor pasandole un array vacio de equipos
-    public function __construct(string $nombre, int $id, int $maxAlquilerConcurrente)
+    public function __construct(string $nombre, int $id, int $maxAlquilerConcurrente = 3)
     {
         $this->nombre = $nombre;
         $this->id = $id;
@@ -28,9 +28,19 @@ class clientes
         return in_array($equipo, $this->equiposAlquilados, true);
     }
     // pendiente
-    public function devvolver(int $numEquipo){
-        foreach ($this->equiposAlquilados as $key) {
-            
+    public function alquilar(equipo $equipo){
+
+    }
+    // metodo para setear el objeto que compramos como devuelvo y quitarlo de nuetro array de prestamos
+    public function devolver(int $numEquipo): void
+    {
+        foreach ($this->equiposAlquilados  as $indice => $equipo) {
+            if ($equipo->getnumero() === $numEquipo) {
+                $equipo->marcarDevuelto();
+                unset($this->equiposAlquilados[$indice]);
+                break;
+            }
         }
     }
+
 }
