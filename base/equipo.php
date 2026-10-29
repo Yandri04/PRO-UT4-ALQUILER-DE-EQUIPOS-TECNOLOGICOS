@@ -2,7 +2,7 @@
 require_once __DIR__ . '/interfaces/alquilable.php';
 require_once __DIR__ . '/interfaces/resumible.php';
 
-abstract class equipo implements Alquilable
+abstract class equipo implements Alquilable , resumible
 {
     const IVA = 0.21;
     public string $nombre;

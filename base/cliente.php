@@ -23,15 +23,31 @@ class clientes
         return count($this->equiposAlquilados);
     }
 
-    public function tieneAlquilado(equipo $equipo)
+    public function tieneAlquilado(equipo $equipo): bool
     {
         return in_array($equipo, $this->equiposAlquilados, true);
     }
     // pendiente
-    public function alquilar(equipo $equipo){
+    public function alquilar(equipo $equipo)
+    {
+        // Nosotros ya tenems alquilado este producto
+        if ($this->tieneAlquilado($equipo)) {
+            throw new Exception("ERROR YA ALQUILAMOS ESTE EQUIPOS");
+        }
+        // ya llegamos al cupo maximo de alquileres
+        if ($this->maxAlquilerConcurrente === 3) {
+            throw new Exception("ERROR YA LLEGASTE A TU CANTIDAD MAXIMA DE PRODUCTOS ALQUILADOS");
+        }
+        // otro cliente tiene alquilado ese equipo
 
+        if ($equipo->estaAlquilado()) {
+            throw new Exception("ERROR EL EQUIPO YA ESTA ALQUILADO POR OTRA PERSONA");
+        }
+
+        $equipo->marcarAlquilado();
+        array_push($this->equiposAlquilados, $equipo);
     }
-    
+
     // metodo para setear el objeto que compramos como devuelvo y quitarlo de nuetro array de prestamos
     public function devolver(int $numEquipo): void
     {
@@ -43,5 +59,11 @@ class clientes
             }
         }
     }
-
+    public function listaAlquileres():string{
+        $txt = "";
+        foreach ($this->equiposAlquilados as $indice => $equipo) {
+            $txt += $equipo->muestraResumen();
+        }
+        return $txt ;
+    }
 }
