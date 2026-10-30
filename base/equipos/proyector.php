@@ -8,7 +8,7 @@ class proyector extends equipo
     #[Override]
     public function __construct(string $nombre, int $numero, float $precio, array $conexiones, string $resolucion)
     {
-        return parent::__construct($nombre, $numero, $precio);
+        parent::__construct($nombre, $numero, $precio);
         $this->conexiones = $conexiones;
         $this->resolucion = $resolucion;
     }

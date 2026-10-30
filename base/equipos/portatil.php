@@ -9,7 +9,7 @@ class portatil extends equipo implements Asegurable
     #[Override]
     public function __construct(string $nombre, int $numero, float $precio, int $ramGb)
     {
-        return parent::__construct($nombre, $numero, $precio);
+        parent::__construct($nombre, $numero, $precio);
         $this->ramGb = $ramGb;
     }
 

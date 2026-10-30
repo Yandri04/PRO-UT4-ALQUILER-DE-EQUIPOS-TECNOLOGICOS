@@ -28,14 +28,14 @@ class clientes
         return in_array($equipo, $this->equiposAlquilados, true);
     }
     // pendiente
-    public function alquilar(equipo $equipo)
+    public function alquilar(equipo $equipo):void
     {
         // Nosotros ya tenems alquilado este producto
         if ($this->tieneAlquilado($equipo)) {
             throw new Exception("ERROR YA ALQUILAMOS ESTE EQUIPOS");
         }
         // ya llegamos al cupo maximo de alquileres
-        if ($this->maxAlquilerConcurrente === 3) {
+        if (($this->numEquiposAlquilados() >= $this->maxAlquilerConcurrente)) {
             throw new Exception("ERROR YA LLEGASTE A TU CANTIDAD MAXIMA DE PRODUCTOS ALQUILADOS");
         }
         // otro cliente tiene alquilado ese equipo

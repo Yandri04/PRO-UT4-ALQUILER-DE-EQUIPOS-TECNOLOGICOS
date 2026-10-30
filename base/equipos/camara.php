@@ -10,7 +10,7 @@ class camara extends equipo implements Asegurable
     #[Override]
     public function __construct(string $nombre, int $numero, float $precio, string $marca, int $minIso, int $maxIso)
     {
-        return parent::__construct($nombre, $numero, $precio);
+        parent::__construct($nombre, $numero, $precio);
         $this->marca = $marca;
         $this->minIso = $minIso;
         $this->maxIso = $maxIso;

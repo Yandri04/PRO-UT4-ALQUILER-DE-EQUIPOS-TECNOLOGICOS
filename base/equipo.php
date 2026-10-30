@@ -44,12 +44,12 @@ abstract class equipo implements Alquilable , resumible
 
     public function marcarAlquilado(): void
     {
-        $this->alquilado === true;
+        $this->alquilado = true;
     }
 
     public function marcarDevuelto(): void
     {
-        $this->alquilado === false;
+        $this->alquilado = false;
     }
 
     public function muestraResumen(): string
